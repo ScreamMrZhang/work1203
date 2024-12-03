@@ -47,8 +47,9 @@
         const r4 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,14}$/;
         return r4.test(password);
     }
+    console.log(checkPassword("12345678"));     // false (缺少字母)
 
 
-    
+
 </script>
 </html>
