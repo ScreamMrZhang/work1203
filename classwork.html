@@ -1,10 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
 </body>
+<script>
+    //1.编写一个正则表达式，匹配一个格式正确的IPv4地址。
+    var r1 = /((25[0-5]|2[0-4][0-9]|[1][0-9][0-9]|[1][0-9]|[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[1][0-9][0-9]|[1][0-9]|[0-9])/g;
+
+    var s1 = "0.0.0.0 192.168.1.1 256.256.256.256"
+    var res1 = s1.match(r1);
+    console.log(res1);
+    console.log(r1.test(s1));
+
+    //2.编写一个正则表达式，匹配一个格式正确的日期（年份为四位数，月份和日期为两位数）。
+    // var r2 = /^\d{4}[.]?(0[1-9]|1[0-2])[.]?(0[1-9]|[12][0-9]|3[01])$/;
+    var r2 = /^\d{4}\D?(0[1-9]|1[0-2])\D?(0[1-9]|[12][0-9]|3[01])$/g;
+    var r22 = /^\d{4}\D?(0[1-9]|1[0-2])\D?(0[1-9]|[12][0-9]|3[01])$/g;
+
+
+
+    var s2 = "2000年06月30日 2099年18月20日 2024.12.02 2024/12/13";
+    var s22 = "2000年06月30日 2099年18月20日 2024.12.02 2024/12/13";
+    var res2 = s22.match(r2);
+    console.log(res2);
+
+    //3.编写一个正则表达式，验证一个密码是否符合要求（至少8个字符，包含至少一个大写字母、一个小写字母和一个数字）
+    function checkPassword(password) {
+        const r3 = /^(?=(.*[a-z]))(?=(.*[A-Z]))(?=(.*\d)).{8,}$/;
+        return r3.test(password);
+    }
+
+    console.log("第三题密码验证");
+    console.log(checkPassword("Password123"));  // true
+    console.log(checkPassword("password123"));  // false (缺少大写字母)
+    console.log(checkPassword("PASSWORD123"));  // false (缺少小写字母)
+    console.log(checkPassword("Pass12"));       // false (长度不足8个字符)
+    console.log(checkPassword("12345678"));     // false (缺少字母)
+
+
+    //4.编写一个正则表达式，验证一个密码是否符合要求（8-14个字符，由大写字母、小写字母和数字组成，至少包含其中两种）
+</script>
 </html>
