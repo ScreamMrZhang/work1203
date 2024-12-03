@@ -43,5 +43,12 @@
 
 
     //4.编写一个正则表达式，验证一个密码是否符合要求（8-14个字符，由大写字母、小写字母和数字组成，至少包含其中两种）
+    function checkPassword2(password) {
+        const r4 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,14}$/;
+        return r4.test(password);
+    }
+
+
+    
 </script>
 </html>
