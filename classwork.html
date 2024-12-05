@@ -50,6 +50,15 @@
     console.log(checkPassword("12345678"));     // false (缺少字母)
 
 
+    var num = "123456789000000";
+    var r = /(?=(\d{3})+)$/g;
+    console.log(num.replace(r, ","));
+
+
+    var str7 = "aba aabaa aaabccc ccdcc abcdcba";
+    var reg7 = /(\w+)\w\1/g;
+    console.log(str7.match(reg7));
+
 
 </script>
 </html>
