@@ -1,4 +1,4 @@
-name: Deploy to Docker Nginx
+name: Deploy1204 to Docker Nginx
 
 on:
   push:
@@ -7,20 +7,21 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: SSH to server and deploy
-      uses: appleboy/ssh-action@v0.1.6
-      with:
-        host: ${{ secrets.SERVER_IP }}
-        username: ${{ secrets.SERVER_USER }}
-        password: ${{ secrets.SERVER_PASSWORD }}
-        port: 22
-        #script: |
-        #  cd /path/to/your/docker/project
-        #  docker-compose down
-        #  docker-compose up -d
+
+      - name: Scp to server and deploy
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          source: "./*.html"
+          target: ${{ secrets.SERVER_TARGET }}
+
+
